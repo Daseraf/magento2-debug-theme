@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Magento Debug</title>
+        <meta name="viewport" content="width=1024"/>
+        <meta name="format-detection" content="telephone=no"/>
+        <link src="requirejs/require.js"/>
+        <css src="extjs/resources/css/ext-all.css"/>
+        <css src="extjs/resources/css/ytheme-magento.css"/>
+    </head>
+    <body>
+        <attribute name="id" value="html-body"/>
+        <block name="require.js" class="Magento\Backend\Block\Page\RequireJs" template="Daseraf_Debug::page/js/require_js.phtml"/>
+        <block class="Magento\Framework\View\Element\Template" name="head.additional" template="Daseraf_Debug::page/container.phtml"/>
+        <referenceContainer name="after.body.start">
+            <block class="Magento\RequireJs\Block\Html\Head\Config" name="requirejs-config"/>
+            <block class="Magento\Translation\Block\Html\Head\Config" name="translate-config"/>
+            <block class="Magento\Translation\Block\Js" name="translate" template="Magento_Translation::translate.phtml"/>
+            <block class="Magento\Framework\View\Element\Js\Components" name="head.components" as="components" template="Daseraf_Debug::page/js/components.phtml"/>
+        </referenceContainer>
+    </body>
+</page>
